@@ -28,14 +28,9 @@ io.on("connection", (socket) => {
     }
   });
 
-  socket.on("fetch history", () => {
-    console.log("iiiiiiiiiiiiiiiiiii");
-    socket.emit("history", messageshistory);
-  });
-
   socket.on("message", ({ message, room, user }) => {
     console.log("heloooo", { message, room, user });
-    messageshistory.push({ nmessages: message, ruser: user });
+    messageshistory.push({ nmessages: message, ruser: user, myroom:room });
 
     if (room) {
       const x = messageshistory.length;
